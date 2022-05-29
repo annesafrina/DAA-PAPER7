@@ -14,14 +14,11 @@ class Graph:
     def dijkstra(self, start):
         Dijkstra = {v:float('inf') for v in range(self.v)}
         Dijkstra[start] = 0
-    
         pq = PriorityQueue()
         pq.put((0, start))
-    
         while not pq.empty():
             (dist, current) = pq.get()
             self.visited_node.append(current)
-    
             for next in range(self.v):
                 if self.edge[current][next] != -1:
                     distance = self.edge[current][next]
@@ -32,10 +29,8 @@ class Graph:
                             pq.put((second_weight, next))
                             Dijkstra[next] = second_weight
         return Dijkstra
-
 z=9
 g = Graph(10)
-
 g.add_edge(0, 1, 2)
 g.add_edge(r.randint(0,z),r.randint(0,z),r.randint(0,z))
 g.add_edge(r.randint(0,z),r.randint(0,z),r.randint(0,z))
@@ -45,7 +40,6 @@ g.add_edge(r.randint(0,z),r.randint(0,z),r.randint(0,z))
 g.add_edge(r.randint(0,z),r.randint(0,z),r.randint(0,z))
 g.add_edge(r.randint(0,z),r.randint(0,z),r.randint(0,z))
 g.add_edge(r.randint(0,z),r.randint(0,z),r.randint(0,z))
-
 Dijkstra = g.dijkstra(0)
 print(Dijkstra)
 end_time = datetime.now()
